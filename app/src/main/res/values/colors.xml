@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="bg">#0B0E13</color>
+    <color name="surface">#131A24</color>
+    <color name="surface_alt">#1B2432</color>
+    <color name="accent">#00A4DC</color>
+    <color name="text">#F2F6FA</color>
+    <color name="text_muted">#93A3B8</color>
+    <color name="green">#3DDC84</color>
+    <color name="amber">#FFB020</color>
+    <color name="red">#FF5C7A</color>
+    <color name="ripple">#33FFFFFF</color>
+</resources>

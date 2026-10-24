@@ -1,0 +1,80 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    namespace 'com.jellyfinserver.app'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId 'com.jellyfinserver.app'
+        // minSdk 26 gives us java.nio.file (symlink creation) and adaptive icons.
+        minSdk 26
+        // targetSdk 28 is deliberate: Android 10+ forbids executing binaries from
+        // the app data directory for apps targeting API 29+, and scoped storage
+        // would hide the media library. Both are required to run the Linux server
+        // through proot, so this app is meant for sideloading.
+        targetSdk 28
+        versionCode 1
+        versionName '1.0.0'
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            shrinkResources false
+            // Signed with the local debug key so that `assembleRelease` produces an
+            // installable APK without requiring a private keystore.
+            signingConfig signingConfigs.debug
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+    androidResources {
+        // The rootfs asset is already gzip compressed: store it as is instead of
+        // deflating it again (and keep the asset merger from touching it).
+        noCompress 'bin'
+    }
+
+    lint {
+        abortOnError false
+    }
+}
+
+dependencies {
+    // Streaming tar extraction of the rootfs asset.
+    implementation 'org.apache.commons:commons-compress:1.26.2'
+    implementation 'commons-io:commons-io:2.16.1'
+}
+
+// The Jellyfin runtime bundle (Debian rootfs + server + ffmpeg, proot) is around
+// 190 MiB and therefore not committed. It is rebuilt from the official container
+// image before the first build: see tools/build-assets.py.
+//
+// Windows exposes the interpreter as `python`, Linux/macOS as `python3`; setting
+// the PYTHON environment variable overrides both (how-to-build/build-windows.bat
+// does that with the Python it downloads).
+def pythonCommand = System.getenv('PYTHON')
+if (!pythonCommand) {
+    pythonCommand = System.getProperty('os.name').toLowerCase().contains('windows') ? 'python' : 'python3'
+}
+
+def serverAssetsTask = tasks.register('serverAssets', Exec) {
+    description = 'Downloads/builds the Jellyfin arm64 runtime bundle packed into assets/'
+    def archive = file('src/main/assets/rootfs.bin')
+    def proot = file('src/main/assets/proot/proot')
+    onlyIf { !archive.exists() || !proot.exists() }
+    workingDir rootProject.projectDir
+    commandLine pythonCommand, 'tools/build-assets.py'
+    doFirst {
+        logger.lifecycle("JellyfinServer: building the embedded server bundle with '${pythonCommand}'")
+    }
+}
+
+tasks.named('preBuild').configure {
+    dependsOn serverAssetsTask
+}

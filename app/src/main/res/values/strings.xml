@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">JellyfinServer</string>
+
+    <string name="status_not_installed">Serveur non installé</string>
+    <string name="status_installing">Installation en cours…</string>
+    <string name="status_stopped">Serveur arrêté</string>
+    <string name="status_starting">Démarrage du serveur…</string>
+    <string name="status_running">Serveur en ligne</string>
+    <string name="status_stopping">Arrêt du serveur…</string>
+    <string name="status_error">Erreur</string>
+
+    <string name="install_title">Installer le serveur Jellyfin</string>
+    <string name="install_text">JellyfinServer intègre le serveur Jellyfin 12.3 pour Android arm64, ffmpeg et un mini-système Debian. L\'extraction se fait une seule fois et prend quelques minutes.</string>
+    <string name="install_wait">Ne fermez pas l\'application pendant l\'installation.</string>
+    <string name="btn_install">Installer le serveur</string>
+    <string name="btn_start">Démarrer</string>
+    <string name="btn_stop">Arrêter</string>
+    <string name="btn_logs">Journal</string>
+    <string name="btn_settings">Réglages</string>
+
+    <string name="panel_ready_title">Le serveur est prêt</string>
+    <string name="panel_ready_text">Démarrez le serveur puis ouvrez l\'interface d\'administration pour créer votre compte et vos bibliothèques. Laissez l\'application ouverte pendant le démarrage.</string>
+    <string name="panel_starting_title">Démarrage en cours</string>
+    <string name="panel_starting_text">Jellyfin initialise sa base de données. Le serveur est accessible dès que l\'interface répond.</string>
+    <string name="panel_error_title">Le serveur s\'est arrêté</string>
+    <string name="panel_error_text">Consultez le journal pour identifier la cause, puis redémarrez le serveur.</string>
+
+    <string name="urls_title">Adresses d\'accès</string>
+    <string name="url_local_label">Sur ce téléphone</string>
+    <string name="url_lan_label">Depuis le réseau local</string>
+    <string name="media_hint">Vos médias sont visibles dans /media depuis l\'interface Jellyfin. Ajoutez vos bibliothèques à cet emplacement.</string>
+
+    <string name="log_title">Journal du serveur</string>
+    <string name="close">Fermer</string>
+    <string name="copy">Copier</string>
+    <string name="copied">Journal copié dans le presse-papiers.</string>
+
+    <string name="storage_permission_denied">Accès au stockage refusé : la bibliothèque multimédia ne sera pas accessible.</string>
+    <string name="battery_title">Maintenir le serveur actif</string>
+    <string name="battery_text">Pour que JellyfinServer continue de fonctionner lorsque l\'écran est éteint, autorisez-le à ignorer l\'optimisation de la batterie.</string>
+    <string name="battery_action">Autoriser</string>
+    <string name="later">Plus tard</string>
+
+    <string name="settings_title">Réglages</string>
+    <string name="settings_autostart">Démarrer le serveur au démarrage du téléphone</string>
+    <string name="settings_data_usage">Version du serveur : %1$s</string>
+    <string name="settings_reset">Supprimer le serveur installé</string>
+    <string name="reset_confirm_title">Supprimer le serveur ?</string>
+    <string name="reset_confirm_text">Le serveur, sa configuration et sa base de données seront supprimés du téléphone. Vos fichiers multimédias ne sont pas touchés.</string>
+    <string name="reset_action">Supprimer</string>
+
+    <string name="notification_channel">Serveur Jellyfin</string>
+    <string name="notification_channel_description">Maintient le serveur Jellyfin actif en arrière-plan</string>
+    <string name="notification_starting">Démarrage du serveur…</string>
+    <string name="notification_running">Serveur actif — %1$s</string>
+    <string name="notification_stopping">Arrêt du serveur…</string>
+    <string name="notification_action_stop">Arrêter</string>
+    <string name="notification_action_open">Ouvrir</string>
+
+    <string name="web_error">Impossible de charger l\'interface Jellyfin. Vérifiez le journal du serveur.</string>
+    <string name="install_progress">%1$d %% · %2$s</string>
+    <string name="start_failed">Le serveur n\'a pas démarré. Consultez le journal.</string>
+    <string name="server_stopped_unexpectedly">Le serveur s\'est arrêté de façon inattendue (code %1$d).</string>
+    <string name="open_in_browser_failed">Aucun navigateur n\'est disponible sur cet appareil.</string>
+    <string name="open_browser">Ouvrir dans le navigateur</string>
+</resources>

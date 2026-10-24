@@ -1,0 +1,25 @@
+# Gradle / Android
+.gradle/
+build/
+local.properties
+*.iml
+.idea/
+captures/
+
+# Generated runtime bundle (rebuilt by tools/build-assets.py)
+.cache-assets/
+app/src/main/assets/proot/
+app/src/main/assets/rootfs.bin
+app/src/main/assets/rootfs.sha256
+
+# Build artefacts
+dist/
+*.apk
+*.aab
+
+# Toolchains installed by how-to-build-android/build-windows.bat
+how-to-build-android/.tools/
+
+# Python
+__pycache__/
+*.pyc
